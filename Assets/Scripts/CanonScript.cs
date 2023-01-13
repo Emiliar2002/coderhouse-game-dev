@@ -6,9 +6,10 @@ using UnityEngine.UIElements;
 public class CanonScript : MonoBehaviour
 {
 
-    public bool shooting = false;
+    private bool shooting = false;
 
     public GameObject bulletPrefab;
+    public Transform pointOfShoot;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,29 +19,29 @@ public class CanonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKey(KeyCode.Space) & !shooting)
-        //{
-        //    Instantiate(bulletPrefab, this.transform, false);
-        //    shooting = true;
-            
-        //}
-        //else if (!Input.GetKey(KeyCode.Space))
-        //{
-        //    shooting = false;
-        //}
-
-        if(Input.GetKey(KeyCode.J) & Input.GetKey(KeyCode.K) & Input.GetKey(KeyCode.L) & !shooting)
+        if (Input.GetKey(KeyCode.Space) & !shooting)
         {
-            for(int i = 0; i < 3; i++)
-            {
-                Instantiate(bulletPrefab, this.transform, false);
-            }
+            Instantiate(bulletPrefab, pointOfShoot);
             shooting = true;
+
         }
-        else if(!(Input.GetKey(KeyCode.J) & Input.GetKey(KeyCode.K) & Input.GetKey(KeyCode.L)))
+        else if (!Input.GetKey(KeyCode.Space))
         {
             shooting = false;
         }
+
+        //if(Input.GetKey(KeyCode.J) & Input.GetKey(KeyCode.K) & Input.GetKey(KeyCode.L) & !shooting)
+        //{
+        //    for(int i = 0; i < 3; i++)
+        //    {
+        //        Instantiate(bulletPrefab, this.transform, false);
+        //    }
+        //    shooting = true;
+        //}
+        //else if(!(Input.GetKey(KeyCode.J) & Input.GetKey(KeyCode.K) & Input.GetKey(KeyCode.L)))
+        //{
+        //    shooting = false;
+        //}
 
 
     }
